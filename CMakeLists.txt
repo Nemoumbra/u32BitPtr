@@ -6,6 +6,6 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(
         u32BitPtr
         main.cpp
-        tests.cpp new_tests.cpp
+        tests/tests.cpp tests/new_tests.cpp
         u32_bit_ptr.cpp new_u32_bit_ptr.cpp
 )

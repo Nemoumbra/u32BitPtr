@@ -1,6 +1,6 @@
 
-#include "tests.hh"
-#include "new_tests.hh"
+#include "tests/tests.hh"
+#include "tests/new_tests.hh"
 
 
 int main() {
