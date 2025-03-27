@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../src/u32_bit_ptr.hh"
+#include "u32_bit_ptr.hh"
 
 
 namespace tests {

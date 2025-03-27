@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../src/new_u32_bit_ptr.hh"
+#include "new_u32_bit_ptr.hh"
 
 namespace new_tests {
     using namespace nemo;

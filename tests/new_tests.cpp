@@ -46,3 +46,7 @@ namespace new_tests {
 
     }
 }
+
+int main() {
+    new_tests::new_test();
+}

@@ -33,3 +33,7 @@ namespace tests {
         // WTF
     }
 }
+
+int main() {
+    tests::test();
+}
