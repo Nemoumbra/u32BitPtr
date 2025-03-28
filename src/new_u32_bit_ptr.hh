@@ -212,4 +212,3 @@ namespace nemo {
 
     bool operator==(std::nullptr_t, const typed_u32bit_ptr<void>& second);
 }
-

@@ -96,4 +96,3 @@ namespace nemo {
     u32bit_ptr operator+(const u32bit_ptr& ptr, ptrdiff_t offset);
     u32bit_ptr operator-(const u32bit_ptr& ptr, ptrdiff_t offset);
 }
-

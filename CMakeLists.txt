@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_subdirectory(src)
 
 if (u32BitPtr_BUILD_TESTING)
+    enable_testing()
     message(STATUS "Tests are enabled...")
     add_subdirectory(tests)
 endif()
