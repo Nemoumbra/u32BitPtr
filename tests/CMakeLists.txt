@@ -12,10 +12,6 @@ target_link_libraries(
         Untyped_u32BitPtr_tests
         UntypedU32BitPtr_static
 )
-target_include_directories(
-        Untyped_u32BitPtr_tests PRIVATE
-        ${UntypedU32BitPtr_static_INCLUDE_DIRS}
-)
 add_test(
         NAME UntypedTest
         COMMAND Untyped_u32BitPtr_tests
@@ -29,10 +25,6 @@ add_executable(
 target_link_libraries(
         Typed_u32BitPtr_tests
         TypedU32BitPtr_static
-)
-target_include_directories(
-        Typed_u32BitPtr_tests PRIVATE
-        ${TypedU32BitPtr_static_INCLUDE_DIRS}
 )
 add_test(
         NAME TypedTest
