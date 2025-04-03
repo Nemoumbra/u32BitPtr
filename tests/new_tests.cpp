@@ -31,6 +31,7 @@ namespace new_tests {
         assert(stack_top_ptr.read() == object.value);
 
         assert(stack_top_ptr - 1 == nullptr);
+        assert(stack_top_ptr > nullptr);
 
         typed_u32bit_ptr<Object> self(0x0);
         self->mask |= 0x1;
@@ -43,6 +44,8 @@ namespace new_tests {
         typed_u32bit_ptr<void> void_ptr(self);
 
         assert(void_ptr == stack_top_ptr - 1);
+        assert(nullptr == self);
+
 
     }
 }

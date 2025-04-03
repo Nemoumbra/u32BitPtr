@@ -173,6 +173,32 @@ namespace nemo {
         return second.raw() == 0;
     }
 
+    template <typename T>
+    bool operator<(const typed_u32bit_ptr<T>& first, const typed_u32bit_ptr<T>& second) {
+        return first.raw() < second.raw();
+    }
+    template <typename T>
+    bool operator<(const typed_u32bit_ptr<T>& first, std::nullptr_t) {
+        return false;
+    }
+    template <typename T>
+    bool operator<(std::nullptr_t, const typed_u32bit_ptr<T>& second) {
+        return 0 < second.raw();
+    }
+
+    template <typename T>
+    bool operator>(const typed_u32bit_ptr<T>& first, const typed_u32bit_ptr<T>& second) {
+        return second < first;
+    }
+    template <typename T>
+    bool operator>(const typed_u32bit_ptr<T>& first, std::nullptr_t) {
+        return 0 < first;
+    }
+    template <typename T>
+    bool operator>(std::nullptr_t, const typed_u32bit_ptr<T>& second) {
+        return second < 0;
+    }
+
 
     template <>
     class typed_u32bit_ptr<void>: public u32bit_ptr_common {
