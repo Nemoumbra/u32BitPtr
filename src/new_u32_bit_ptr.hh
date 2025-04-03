@@ -10,7 +10,7 @@
 namespace nemo {
     class u32bit_ptr_common {
     protected:
-        static char* base; // not inherited
+        static char* base; // Not inherited
 
         u32 ram_offset;
 
@@ -24,7 +24,7 @@ namespace nemo {
         explicit u32bit_ptr_common(u32 value): ram_offset(value) {}
 
     public:
-        // not inherited
+        // Not inherited
         static void rebase(char* new_base) {
             base = new_base;
         }
@@ -56,7 +56,7 @@ namespace nemo {
 
         explicit typed_u32bit_ptr(u32 value): u32bit_ptr_common(value) {}
 
-        // implicit cast to nullptr
+        // Implicit construction from nullptr
         template <std::same_as<std::nullptr_t> U>
         typed_u32bit_ptr(U): u32bit_ptr_common(0) {}
 
@@ -64,9 +64,12 @@ namespace nemo {
         template <typename U>
         explicit typed_u32bit_ptr(const typed_u32bit_ptr<U>& other): u32bit_ptr_common(other.raw()) {}
 
+        // Construction from host ptr
+        // explicit typed_u32bit_ptr(ConstPtr ptr): u32bit_ptr_common(reinterpret_cast<const char*>(ptr) - base) {}
+
         // Host ptr assignment
         typed_u32bit_ptr& operator=(ConstPtr ptr) {
-            // rebase ptr
+            // Rebase ptr
             ram_offset = reinterpret_cast<const char*>(ptr) - base;
             return *this;
         }
@@ -187,12 +190,17 @@ namespace nemo {
 
         explicit typed_u32bit_ptr(u32 value): u32bit_ptr_common(value) {}
 
-        // implicit
-        typed_u32bit_ptr(std::nullptr_t): u32bit_ptr_common(0) {}
+        // Implicit construction from nullptr
+        template <std::same_as<std::nullptr_t> U>
+        typed_u32bit_ptr(U): u32bit_ptr_common(0) {}
+
 
         // Implicit coercion ctor
         template <typename U>
         typed_u32bit_ptr(const typed_u32bit_ptr<U>& other): u32bit_ptr_common(other.raw()) {}
+
+        // Construction from host ptr
+        // explicit typed_u32bit_ptr(ConstPtr ptr): u32bit_ptr_common(static_cast<const char*>(ptr) - base) {}
 
         // Host ptr assignment
         typed_u32bit_ptr& operator=(ConstPtr ptr) {
@@ -200,9 +208,11 @@ namespace nemo {
             ram_offset = static_cast<const char*>(ptr) - base;
             return *this;
         }
+
         Ptr operator->() {
             return reinterpret_cast<Ptr>(host_ptr());
         }
+
         ConstPtr operator->() const {
             return reinterpret_cast<Ptr>(host_ptr());
         }
