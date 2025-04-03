@@ -32,7 +32,7 @@ namespace new_tests {
 
         assert(stack_top_ptr - 1 == nullptr);
 
-        typed_u32bit_ptr<Object> self(0x0u);
+        typed_u32bit_ptr<Object> self(0x0);
         self->mask |= 0x1;
         assert(object.mask == 0x1);
 

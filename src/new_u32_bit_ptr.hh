@@ -2,6 +2,7 @@
 
 #include <cstring>
 #include <type_traits>
+#include <concepts>
 
 #include "../utils.hh"
 
@@ -55,8 +56,9 @@ namespace nemo {
 
         explicit typed_u32bit_ptr(u32 value): u32bit_ptr_common(value) {}
 
-        // implicit
-        typed_u32bit_ptr(std::nullptr_t): u32bit_ptr_common(0) {}
+        // implicit cast to nullptr
+        template <std::same_as<std::nullptr_t> U>
+        typed_u32bit_ptr(U): u32bit_ptr_common(0) {}
 
         // Explicit coercion ctor
         template <typename U>
