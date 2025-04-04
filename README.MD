@@ -10,7 +10,8 @@ It's a bit inspired by PPSSPP's class `PSPPointer<T>` (you can see it [here](htt
 PPSSPP's approach is setting up the hardcoded virtual 32bit memory ranges
 and using a bunch of functions for reading from and writing to memory.
 
-This is the second time that I'm dealing with this kind of problem... My old solution was using a global remapper object
+This is the second time that I'm dealing with this kind of problem... My old solution was using a
+global [remapper](https://github.com/Nemoumbra/PacEngine/tree/master/src/debugger) object
 that you have to use every time you wish to interact with the memory pointed to by the 32bit pointer. And before that,
 you had to manually register the virtual memory ranges. Every query makes a logarithmic RB-tree search (std::map). This time,
 however, I decided to maintain a single virtual memory range by storing a base 64bit pointer as a static class field.
@@ -39,4 +40,4 @@ Perhaps I'll add the remapper here too later.
 Check the self-explanatory tests in the `tests` dir.
 
 ## Contributing
-Sure, why not? PRs and/ore issues are welcome.
+Sure, why not? PRs and/or issues are welcome.
